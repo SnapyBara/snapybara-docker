@@ -1,0 +1,3 @@
+[submodule "snapybara-back"]
+	path = snapybara-back
+	url = git@github.com:SnapyBara/snapybara-back.git

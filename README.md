@@ -24,7 +24,7 @@ Cette configuration Docker fournit un environnement de développement et de prod
 
 ```bash
 # Cloner le projet avec les submodules
-git clone --recursive https://github.com/username/mon-projet-docker.git
+git clone --recursive git@github.com:SnapyBara/snapybara-docker.git
 
 # Ou si déjà cloné
 git submodule update --init --recursive

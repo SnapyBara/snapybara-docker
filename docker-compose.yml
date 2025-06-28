@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   # ==========================================
   # BASE DE DONNÉES MONGODB
@@ -65,8 +63,8 @@ services:
   # ==========================================
   nestjs_api:
     build:
-      context: .
-      dockerfile: Dockerfile
+      context: ./snapybara-back
+      dockerfile: ./Dockerfile
       target: ${BUILD_TARGET:-development}
       args:
         NODE_VERSION: ${NODE_VERSION:-20}
@@ -110,7 +108,7 @@ services:
       - "${API_PORT:-3000}:3000"
     volumes:
       # Development hot reload
-      - .:/usr/src/app:delegated
+      - ./snapybara-back:/usr/src/app:delegated
       - /usr/src/app/node_modules
       - ./uploads:/usr/src/app/uploads
       - ./logs:/usr/src/app/logs
@@ -233,4 +231,4 @@ networks:
     driver: bridge
     ipam:
       config:
-        - subnet: 172.20.0.0/16
+        - subnet: 172.25.0.0/16

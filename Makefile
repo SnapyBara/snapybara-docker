@@ -43,6 +43,7 @@ up: ## Lance l'application en mode développement
 	$(DOCKER_COMPOSE) up -d
 	@echo "$(GREEN)✅ Application démarrée!$(NC)"
 	@echo "$(YELLOW)API: http://localhost:3000$(NC)"
+	@echo "$(YELLOW)Admin: http://localhost:3005$(NC)"
 	@echo "$(YELLOW)MongoDB Express: http://localhost:8081$(NC)"
 	@echo "$(YELLOW)Redis Commander: http://localhost:8082$(NC)"
 	@echo "$(YELLOW)MailHog: http://localhost:8025$(NC)"
@@ -94,6 +95,9 @@ logs-db: ## Affiche les logs de MongoDB
 logs-redis: ## Affiche les logs de Redis
 	$(DOCKER_COMPOSE) logs -f redis
 
+logs-admin: ## Affiche les logs de l'Admin
+	$(DOCKER_COMPOSE) logs -f admin
+
 # ==========================================
 # SHELL ET ACCÈS AUX CONTENEURS
 # ==========================================
@@ -105,6 +109,9 @@ shell-db: ## Accède au shell MongoDB
 
 shell-redis: ## Accède au shell Redis
 	$(DOCKER_COMPOSE) exec redis redis-cli
+
+shell-admin: ## Accède au shell du conteneur Admin
+	$(DOCKER_COMPOSE) exec admin sh
 
 # ==========================================
 # TESTS
@@ -124,6 +131,14 @@ test-cov: ## Lance les tests avec couverture
 # ==========================================
 # BASE DE DONNÉES
 # ==========================================
+db-up: ## Lance seulement MongoDB
+	@echo "$(GREEN)🍃 Démarrage de MongoDB...$(NC)"
+	$(DOCKER_COMPOSE) up -d mongodb
+
+db-test: ## Test la connexion à la base de données
+	@echo "$(GREEN)🧪 Test de connexion MongoDB...$(NC)"
+	$(DOCKER_COMPOSE) run --rm nestjs_api npm run test:db
+
 db-seed: ## Peuple la base de données avec des données de test
 	@echo "$(GREEN)🌱 Seed de la base de données...$(NC)"
 	$(DOCKER_COMPOSE) exec nestjs_api npm run seed

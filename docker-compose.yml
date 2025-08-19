@@ -64,7 +64,7 @@ services:
   nestjs_api:
     build:
       context: ./snapybara-back
-      dockerfile: ./Dockerfile
+      dockerfile: ./Dockerfile.dev
       target: ${BUILD_TARGET:-development}
       args:
         NODE_VERSION: ${NODE_VERSION:-20}

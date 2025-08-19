@@ -19,36 +19,36 @@ NC = \033[0m # No Color
 # ==========================================
 # AIDE
 # ==========================================
-help: ## Affiche cette aide
+help:
 	@echo "$(GREEN)Commandes disponibles:$(NC)"
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "  $(YELLOW)%-20s$(NC) %s\n", $$1, $$2}'
 
 # ==========================================
 # DÉVELOPPEMENT
 # ==========================================
-submodule-init: ## Initialise les submodules
-	@echo "$(GREEN)📦 Initialisation des submodules...$(NC)"
+submodule-init:
+	@echo "$(GREEN)Initialisation des submodules...$(NC)"
 	git submodule update --init --recursive
 
-submodule-update: ## Met à jour les submodules
-	@echo "$(GREEN)🔄 Mise à jour des submodules...$(NC)"
+submodule-update:
+	@echo "$(GREEN)Mise à jour des submodules...$(NC)"
 	git submodule update --remote --merge
 
-build: ## Construit les images Docker
-	@echo "$(GREEN)🔨 Construction des images...$(NC)"
+build:
+	@echo "$(GREEN)Construction des images...$(NC)"
 	$(DOCKER_COMPOSE) build --no-cache
 
-up: ## Lance l'application en mode développement
-	@echo "$(GREEN)🚀 Démarrage de l'application...$(NC)"
+up:
+	@echo "$(GREEN)Démarrage de l'application...$(NC)"
 	$(DOCKER_COMPOSE) up -d
-	@echo "$(GREEN)✅ Application démarrée!$(NC)"
+	@echo "$(GREEN)Application démarrée!$(NC)"
 	@echo "$(YELLOW)API: http://localhost:3000$(NC)"
 	@echo "$(YELLOW)Admin: http://localhost:3005$(NC)"
 	@echo "$(YELLOW)MongoDB Express: http://localhost:8081$(NC)"
 	@echo "$(YELLOW)Redis Commander: http://localhost:8082$(NC)"
 	@echo "$(YELLOW)MailHog: http://localhost:8025$(NC)"
 
-up-build: ## Lance l'application en reconstruisant les images
+up-build:
 	@echo "$(GREEN)🔨 Construction et démarrage...$(NC)"
 	$(DOCKER_COMPOSE) up -d --build
 

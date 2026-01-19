@@ -12,7 +12,7 @@
 
 </div>
 
-![Demo] : https://youtu.be/jOMCUaggxhE
+Demo : https://youtu.be/jOMCUaggxhE
 
 ## Table of Contents
 

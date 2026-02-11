@@ -76,12 +76,12 @@ services:
       PORT: ${API_PORT:-3000}
 
       # Database
-      MONGODB_URI: mongodb://admin:password123@mongodb:27017/snapybara_db?authSource=admin
+      MONGODB_URI: ${MONGODB_URI}
 
       # Redis
       REDIS_HOST: redis
       REDIS_PORT: 6379
-      REDIS_PASSWORD: ${REDIS_PASSWORD:-redis123}
+      REDIS_PASSWORD: ${REDIS_PASSWORD}
 
       # Supabase
       SUPABASE_URL: ${SUPABASE_URL}

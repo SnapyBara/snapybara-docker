@@ -4,4 +4,4 @@
 
 [submodule "snapybara-admin"]
 	path = snapybara-admin
-	url = git@github.com:TON_USER/snapybara-admin.git
+	url = git@github.com:SnapyBara/snapybara-admin.git

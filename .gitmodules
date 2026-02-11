@@ -2,6 +2,3 @@
 	path = snapybara-back
 	url = git@github.com:SnapyBara/snapybara-back.git
 
-[submodule "snapybara-admin"]
-	path = snapybara-admin
-	url = git@github.com:SnapyBara/snapybara-admin.git
